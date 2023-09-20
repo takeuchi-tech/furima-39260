@@ -22,10 +22,10 @@ has_many :purchases
 | category_id          | integer           | null: false                    |
 | product_condition_id | integer           | null: false                    |
 | shipping_fee_id      | integer           | null: false                    |
-| origin_address_id    | integer           | null: false                    |
+| prefecture_id        | integer           | null: false                    |
 | shipping_time_id     | integer           | null: false                    |
 | price                | integer           | null: false,                   |
-| user_id              | references        | null: false, foreign_key: true |
+| user                 | references        | null: false, foreign_key: true |
 
 ### Association
 belongs_to :user
@@ -34,8 +34,8 @@ has_one :purchase
 ## purchases テーブル
 | Column              | Type              | Options                        |
 | ------------------- | ----------------- | ------------------------------ |
-| user_id             | references        | null: false, foreign_key: true |
-| item_id             | references        | null: false, foreign_key: true |
+| user                | references        | null: false, foreign_key: true |
+| item                | references        | null: false, foreign_key: true |
 
 ### Association
 belongs_to :user
