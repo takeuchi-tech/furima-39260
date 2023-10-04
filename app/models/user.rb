@@ -7,10 +7,11 @@ class User < ApplicationRecord
   has_many :purchases
 
   validates :nickname,        presence: true
-  validates :last_name,       presence: true
-  validates :first_name,      presence: true
-  validates :last_name_kana,  presence: true
-  validates :first_name_kana, presence: true
+  validates :password,        presence: true, format: { with: /\A(?=.*[a-zA-Z])(?=.*[0-9])/,message: "is invalid. Include both letters and numbers."}
+  validates :last_name,       presence: true, format: { with: /\A[ぁ-んァ-ン一-龥々]+\z/,message:"is invalid. Input full-width characters"}
+  validates :first_name,      presence: true, format: { with: /\A[ぁ-んァ-ン一-龥々]+\z/,message:"is invalid. Input full-width characters"}
+  validates :last_name_kana,  presence: true, format: { with: /\A[ァ-ン]+\z/,message:"is invalid. Input full-width katakana characters"}
+  validates :first_name_kana, presence: true, format: { with: /\A[ァ-ン]+\z/,message:"is invalid. Input full-width katakana characters"}
   validates :date_of_birth,   presence: true
 
 end
