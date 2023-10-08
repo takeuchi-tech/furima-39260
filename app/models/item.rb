@@ -3,10 +3,15 @@ class Item < ApplicationRecord
   has_one :purchase
   has_one_attached :image
 
-  validates :product_name,        presence: true
-  validates :product_description, presence: true
-  validates :priced,              presence: true
-  validates :image,               presence: true, unless: :was_attached?
+  validates :product_name,         presence: true, length: { maximum: 40 }
+  validates :product_description,  presence: true, length: { maximum: 1000 }
+  validates :category_id,          presence: true
+  validates :product_condition_id, presence: true
+  validates :shipping_fee_id,      presence: true
+  validates :prefecture_id,        presence: true
+  validates :shipping_time_id,     presence: true
+  validates :priced,               presence: true
+  validates :image,                presence: true, unless: :was_attached?
 
   def was_attached?
     self.image.attached?
@@ -22,6 +27,6 @@ class Article < ApplicationRecord
   belongs_to :prefecture
   belongs_to :shipping_time
 
-  validates :category, :product_condition, :shipping_fee, :prefecture, :shipping_time, numericality: { other_than: 1, message: "can't be blank" }
+  validates :category_id, :product_condition_id, :shipping_fee_id, :prefecture_id, :shipping_time_id, numericality: { other_than: 1, message: "can't be blank" }
 
 end
