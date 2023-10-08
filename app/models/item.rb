@@ -10,13 +10,13 @@ class Item < ApplicationRecord
   validates :shipping_fee_id,      presence: true
   validates :prefecture_id,        presence: true
   validates :shipping_time_id,     presence: true
-  validates :priced,               presence: true
+  validates :priced,               presence: true, format: { with: /\A\d+\z/, message: 'is invalid. Include only numbers.' },
+                                   numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   validates :image,                presence: true, unless: :was_attached?
 
   def was_attached?
-    self.image.attached?
+    image.attached?
   end
-
 end
 
 class Item < ApplicationRecord
@@ -27,6 +27,6 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :shipping_time
 
-  validates :category_id, :product_condition_id, :shipping_fee_id, :prefecture_id, :shipping_time_id, numericality: { other_than: 1, message: "can't be blank" }
-
+  validates :category_id, :product_condition_id, :shipping_fee_id, :prefecture_id, :shipping_time_id,
+            numericality: { other_than: 1, message: "can't be blank" }
 end

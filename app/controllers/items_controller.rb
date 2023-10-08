@@ -1,11 +1,11 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create], except:[:index]
-  
+  before_action :authenticate_user!, only: [:new, :create], except: [:index]
+
   def index
   end
 
   def new
-    @item = Item.new 
+    @item = Item.new
   end
 
   def create
@@ -17,10 +17,10 @@ class ItemsController < ApplicationController
     end
   end
 
-    private
+  private
 
-    def item_params
-      params.require(:item).permit(:product_name, :product_description, :category_id, :product_condition_id, :shipping_fee_id, :prefecture_id, :shipping_time_id, :priced, :image)
-    end
-
+  def item_params
+    params.require(:item).permit(:product_name, :product_description, :category_id, :product_condition_id, :shipping_fee_id,
+                                 :prefecture_id, :shipping_time_id, :priced, :image)
+  end
 end
