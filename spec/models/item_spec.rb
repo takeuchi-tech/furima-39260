@@ -37,28 +37,28 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include 'Product description is too long (maximum is 1000 characters)'
       end
-      it 'category_idが空だと登録できない' do
-        @item.category_id = ''
+      it 'category_idを選択しないと登録できない' do
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Category can't be blank"
       end
-      it 'product_condition_idが空だと登録できない' do
-        @item.product_condition_id = ''
+      it 'product_condition_idを選択しないと登録できない' do
+        @item.product_condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Product condition can't be blank"
       end
-      it 'shipping_fee_idが空だと登録できない' do
-        @item.shipping_fee_id = ''
+      it 'shipping_fee_idを選択しないと登録できない' do
+        @item.shipping_fee_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Shipping fee can't be blank"
       end
-      it 'prefecture_idが空だと登録できない' do
-        @item.prefecture_id = ''
+      it 'prefecture_idを選択しないと登録できない' do
+        @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Prefecture can't be blank"
       end
-      it 'shipping_time_idが空だと登録できない' do
-        @item.shipping_time_id = ''
+      it 'shipping_time_idを選択しないと登録できない' do
+        @item.shipping_time_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Shipping time can't be blank"
       end

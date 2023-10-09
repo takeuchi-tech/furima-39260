@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
-  has_one :purchase
+  #has_one :purchase
   has_one_attached :image
 
   validates :product_name,         presence: true, length: { maximum: 40 }
@@ -12,11 +12,7 @@ class Item < ApplicationRecord
   validates :shipping_time_id,     presence: true
   validates :priced,               presence: true, format: { with: /\A\d+\z/, message: 'is invalid. Include only numbers.' },
                                    numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
-  validates :image,                presence: true, unless: :was_attached?
-
-  def was_attached?
-    image.attached?
-  end
+  validates :image,                presence: true
 end
 
 class Item < ApplicationRecord
