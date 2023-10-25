@@ -3,15 +3,18 @@
 <%# 商品の概要 %>
 <div class="item-show">
   <div class="item-box">
+  <% @items.each do |item| %>
     <h2 class="name">
-      <%= "商品名" %>
+      <%= item.product_name %>
     </h2>
     <div class="item-img-content">
       <%= image_tag "item-sample.png" ,class:"item-box-img" %>
       <%# 商品が売れている場合は、sold outを表示しましょう %>
-      <div class="sold-out">
-        <span>Sold Out!!</span>
-      </div>
+      <%#if item.purchase.present?%>
+          <%#div class='sold-out'>
+            <span>Sold Out!!</span>
+          </div>
+      <%end%>
       <%# //商品が売れている場合は、sold outを表示しましょう %>
     </div>
     <div class="item-price-box">
@@ -77,6 +80,7 @@
         <span>不適切な商品の通報</span>
       </div>
     </div>
+  <% end %>
   </div>
   <%# /商品の概要 %>
 
